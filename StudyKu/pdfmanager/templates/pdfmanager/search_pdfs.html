@@ -1,0 +1,914 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+</head>
+    <title>Study Ku</title>
+    <style>
+
+body, html {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background: white;
+}
+/* Container for aligning the divs */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: white;
+    padding: 0;
+    overflow: hidden;
+    color: #333;
+     /* Prevents horizontal scrolling */
+    
+}
+
+
+.container {
+    margin-top: -80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px;
+    height: 100vh;
+    box-sizing: border-box;
+}
+
+/* Left Section */
+.left-section {
+    max-width: 50%;
+    
+}
+
+.left-section .logo {
+    height: 50px;
+    margin-bottom: 20px;
+}
+
+.left-section h1 {
+    font-size: 50px;
+    margin: 10px 0;
+}
+
+.left-section .highlight {
+    color: #009688;
+    font-weight: bold;
+    font-size: 50px;
+    font-family: "Montserrat", sans-serif;
+    
+}
+
+.left-section p {
+    font-size: 20px;
+    margin-bottom: 20px;
+    font-weight: 500;
+    margin-left: 10px;
+    font-family: "Montserrat", sans-serif;
+}
+
+.left-section .search {
+    display: flex;
+    align-items: center;
+    position: relative;
+    max-width: 400px;
+}
+
+.left-section .search input {
+    width: 100%;
+    padding: 12px 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+    font-family: "Montserrat", sans-serif;
+}
+
+.left-section .search button {
+    position: absolute;
+    right: 10px;
+    background-color: transparent;
+    border: none;
+    font-size: 1.2rem;
+    color: #999;
+    cursor: pointer;
+}
+.left-section .vault{
+    margin-top: -20px;
+    margin-left: 10px;
+    font-weight: bold;
+    font-size: 50px;
+    font-family: "Montserrat", sans-serif;
+}
+
+
+/* Right Section */
+.right-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    
+   
+}
+
+.student-feedback {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+
+
+
+
+
+
+
+.suggestions {
+    position: absolute;
+    top: 70px; /* Adjusted to appear directly below the search bar */
+    width: 100%;
+    background-color: white;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 1000;
+    font-family: "Montserrat", sans-serif;
+}
+
+.suggestions div {
+    padding: 10px;
+    border-bottom: 1px solid #f0f0f0;
+    color: black;
+    cursor: pointer;
+}
+
+.suggestions div:hover {
+    background-color: #f0f0f0;
+}
+
+.container::-webkit-scrollbar {
+    display: none; /* For Chrome, Safari, and Opera */
+}
+
+/* Hide scrollbar for all browsers */
+.hide-scrollbar {
+    overflow: hidden; /* Remove scrollbar */
+    overflow-y: scroll; /* Enable vertical scrolling without scrollbar */
+}
+
+/* Specific to WebKit browsers (Chrome, Safari, Opera) */
+.hide-scrollbar::-webkit-scrollbar {
+    display: none; /* Hide scrollbar */
+}
+
+/* For Firefox */
+.hide-scrollbar {
+    scrollbar-width: none; /* Hide scrollbar */
+}
+
+
+
+.suggestion-item.highlighted {
+    background-color: #ddd;
+}
+.image {
+    margin-left: auto; /* Push the image div to the right */
+    text-align: center;
+}
+.my-image-class {
+    margin-top: 20px;
+    margin-left: 120px;
+    height: 690px;
+    width: 740px; /* Sets a fixed width to match height */
+    object-fit: cover; /* Adjusts the image scaling behavior */
+    border-radius: 10px; /* Optional: Adds rounded corners */
+}
+.search-container {
+    width: auto; /* Or a specific value large enough for the input */
+}
+
+
+.search_input {
+    margin-top: 20px;
+    width: 18cm !important; /* Ensures the width is applied */
+    height: 0.5cm;
+    padding: 0 35px 0 10px; /* Creates space for the icon */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4); /* Subtle shadow */
+    font-family: "Montserrat", sans-serif;
+    
+    
+}
+
+
+
+.search_icon {
+    position: absolute;
+    top: 65%;
+    right: 10px; /* Adjust as needed */
+    transform: translateY(-50%); /* Centers the icon vertically */
+    font-size: 24px; /* Adjust the icon size as needed */
+    color: #000; /* Adjust icon color */
+}
+.heading-wrapper {
+    
+    display: flex; /* Use flexbox to align items in a row */
+    justify-content: center; /* Center both items horizontally */
+    align-items: center; /* Align both items vertically */
+    gap: 10px; /* Add spacing between "UCEK" and "Study" */
+    text-align: center; /* Ensure text is centered */
+    
+}
+
+/* Styling for "UCEK" */
+.heading-wrapper .highlight {
+    color: teal; /* Highlight color for "UCEK" */
+    
+    font-weight: bold; /* Bold font for emphasis */
+    font-family: "Montserrat", sans-serif;
+    font-size: 50px; /* Font size for "UCEK" */
+}
+
+/* Styling for "Study" */
+.heading-wrapper p {
+    
+    font-size: 50px; /* Font size for "Study" */
+    font-weight: bold; /* Normal weight for "Study" */
+    color: #000; /* Default black color */
+    font-family: "Montserrat", sans-serif;
+}
+.left-section .lowkey{
+    margin-top: 10px;
+    font-size: 20px;
+    font-family: "Montserrat", sans-serif;
+    
+}
+
+.image-row {
+    margin-top: -30px;
+    display: flex;
+    justify-content: space-between;/* Pushes images to the left and right extremes */
+    align-items: center; /* Vertically aligns images */
+    width: 100%;
+    padding: 10px; /* Optional: Adds spacing */
+    z-index: 1000; /* Ensures the image row is above other content */
+    
+    
+    
+    
+}
+
+.left-image,
+.right-image {
+    gap: -20px;
+    width: 20%; /* Adjust the size as needed */
+    max-width: 150px; /* Set a maximum size */
+    height: auto; /* Maintains aspect ratio */
+    
+}
+.left-image{
+    height: 50px;
+    width: 50px;
+    margin-left: 80px;
+    
+    
+    
+    
+    
+    
+}
+.right-image{
+    margin-right: 30px;
+    height: 125px;
+    width: 125px;
+}
+
+
+.custom-btn {
+  display: inline-block;
+  padding: 10px 50px; /* Adjust padding for rectangular shape */
+  background-color: #B0B0B0; /* Ash color (you can adjust the shade) */
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  font-size: 15px; /* Adjust font size as needed */
+  font-weight: 500;
+  border-radius: 5px; /* Optional: rounded corners, remove if you want sharp edges */
+  transition: background-color 0.3s ease;
+  margin-top: 25px;
+  
+}
+
+.custom-btn:hover {
+  background-color: #A0A0A0; /* Slightly darker shade for hover effect */
+}
+
+
+
+@media only screen and (device-width: 430px) {
+    body {
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+    }
+    .image-row{
+        padding: 0px;
+       
+        
+    }
+    .container{
+        margin-top: -80px !important;
+        margin-left: -0px !important;
+    }
+    .left-image{
+        margin-left: 20px;
+    }
+    .right-image{
+        margin-right: 10px !important;
+    }
+  
+
+    .my-image-class {
+        margin-top: -600px !important;
+        margin-left: -10px !important;
+        height: 750px !important;
+        width: 450px !important;
+        object-fit: contain;
+    }
+    
+    
+   
+    .search {
+        margin-top: 100px;
+        width: 231%;
+        margin-left: -105px !important;
+        order: -1;
+        margin-bottom: 20px;
+
+        
+  
+  
+  
+  
+    }
+    .search-bar:focus {
+    border-color: #007bff; /* Change border color */
+  box-shadow: 0 0 15px rgba(0, 123, 255, 0.5); /* Highlight shadow */
+}
+    .heading-wrapper {
+        flex-direction: row; /* Stack items vertically on smaller screens */
+        margin-left: -82px;
+        margin-top: 15px;
+        
+    }
+
+    .heading-wrapper .highlight,
+    .heading-wrapper p {
+        font-size: 42px; /* Reduce font size for smaller screens */
+        font-weight: bold;
+    }
+    .left-section .vault{
+        margin-top: 10px;
+        font-size: 42px;
+        margin-left: -225px;
+    }
+    .left-section .lowkey{
+        font-weight: 500;
+        margin-top: 13px;
+        font-size: 13px;
+        margin-left: -210px;
+    }
+}
+
+
+@media (max-width: 768px) {
+   
+    body {
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+    }
+    .image-row{
+        padding: 0px;
+        
+        
+        
+    }
+    .container{
+        margin-top: -80px !important;
+        margin-left: -0px !important;
+    }
+   .left-image{
+    margin-left: 18px !important;
+    height: 40px;
+    width: 40px;
+   }
+   .right-image{
+        margin-right: 10px !important;
+    }
+   
+
+    .container {
+        display: flex;
+        flex-wrap: wrap;  /* Allow wrapping to the next line */
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        padding: 20px;
+        overflow-x: hidden;
+    }
+
+    .left-section {
+        width: 100%;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Force search to appear first */
+    .search {
+        width: 220%;
+        margin-top: 100px;
+        margin-left: -94px;
+        order: -1;
+        margin-bottom: 20px;
+    }
+
+    .search_input {
+        width: 100%;
+        height: 22px;
+        
+        
+    }
+    .search_icon {
+        position: absolute;
+        right: 10px;
+        top: 58%;
+        transform: translateY(-50%);
+        color: #666;
+    }
+
+    /* Title and paragraph after search */
+    .left-section h1 {
+        margin-left: -85px;
+        font-size: 40px;
+        margin-top: 10px;
+        margin-bottom: 15px;
+        order: 1;
+    }
+
+    .left-section p {
+        font-size: 16px;
+        margin: 0;
+        order: 2;
+    }
+
+    /* Right section at bottom */
+    .right-section {
+        width: 100%;
+        text-align: center;
+        
+        
+    }
+   
+    
+
+    .my-image-class {
+        margin-top: -450px;
+        margin-left: -1px;
+        height: 600px;
+        width: 420px;
+        object-fit: contain;
+    }
+
+    .suggestions {
+        width: 100%;
+        position: absolute;
+        z-index: 9;
+    }
+    .heading-wrapper {
+        flex-direction: row; /* Stack items vertically on smaller screens */
+        margin-left: -82px;
+        margin-top: 15px;
+        
+    }
+
+    .heading-wrapper .highlight,
+    .heading-wrapper p {
+        font-size: 42px; /* Reduce font size for smaller screens */
+        font-weight: bold;
+    }
+    .left-section .vault{
+        margin-top: 10px;
+        font-size: 42px;
+        margin-left: -225px;
+    }
+    .left-section .lowkey{
+        font-weight: 500;
+        margin-top: 10px;
+        font-size: 16px;
+        margin-left: -210px;
+    }
+    
+}
+
+@media only screen and (max-width: 375px){
+    body {
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+    }
+    .image-row {
+        padding: 0px;
+    }
+    .container {
+        margin-top: -80px !important;
+        margin-left: 0px !important;
+    }
+    .left-image {
+        margin-left: 20px;
+    }
+    .right-image {
+        margin-right: 10px !important;
+    }
+    .my-image-class {
+        margin-top: -410px !important;
+        margin-left: -10px !important;
+        height: 380px !important;
+        width: 380px !important;
+        object-fit: contain;
+    }
+    .search {
+        margin-top: 100px;
+        width: 215%;
+        margin-left: -82px !important;
+        order: -1;
+        margin-bottom: 20px;
+    }
+    .search_icon {
+        position: absolute;
+        right: 10px;
+        top: 61%;
+        transform: translateY(-50%);
+        color: #666;
+    }
+    .search-bar:focus {
+        border-color: #007bff; /* Change border color */
+        box-shadow: 0 0 15px rgba(0, 123, 255, 0.5); /* Highlight shadow */
+    }
+    .heading-wrapper {
+        flex-direction: row; /* Stack items vertically on smaller screens */
+        margin-left: -70px;
+        margin-top: 15px;
+    }
+    .heading-wrapper .highlight,
+    .heading-wrapper p {
+        font-size: 36px; /* Reduce font size for smaller screens */
+        font-weight: bold;
+    }
+    .left-section .vault {
+        margin-top: 10px;
+        font-size: 36px;
+        margin-left: -200px;
+    }
+    .left-section .lowkey {
+        font-weight: 500;
+        margin-top: 13px;
+        font-size: 13px;
+        margin-left: -190px;
+    }
+}
+@media only screen and (device-width: 375px) and (orientation: portrait) {
+    body {
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+    }
+    .image-row {
+        padding: 0px;
+    }
+    .container {
+        margin-top: -80px !important;
+        margin-left: 0px !important;
+    }
+    .left-image {
+        margin-left: 20px;
+    }
+    .right-image {
+        margin-right: 10px !important;
+    }
+    .my-image-class {
+        margin-top: -330px !important;
+        margin-left: -10px !important;
+        height: 300px !important;
+        width: 320px !important;
+        object-fit: contain;
+    }
+    .search {
+        margin-top: 100px;
+        width: 220%;
+        margin-left: -92px !important;
+        order: -1;
+        margin-bottom: 20px;
+    }
+    .search-bar:focus {
+        border-color: #007bff; /* Change border color */
+        box-shadow: 0 0 15px rgba(0, 123, 255, 0.5); /* Highlight shadow */
+    }
+    .heading-wrapper {
+        flex-direction: row; /* Stack items vertically on smaller screens */
+        margin-left: -70px;
+        margin-top: 15px;
+    }
+    .heading-wrapper .highlight,
+    .heading-wrapper p {
+        font-size: 36px; /* Reduce font size for smaller screens */
+        font-weight: bold;
+    }
+    .left-section .vault {
+        margin-top: 10px;
+        font-size: 36px;
+        margin-left: -200px;
+    }
+    .left-section .lowkey {
+        font-weight: 500;
+        margin-top: 13px;
+        font-size: 13px;
+        margin-left: -190px;
+    }
+}
+
+
+@media only screen and (device-width: 375px) and (orientation: landscape) {
+    body {
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+    }
+    .image-row {
+        padding: 0px;
+    }
+    .container {
+        margin-top: -60px !important;
+        margin-left: 0px !important;
+    }
+    .left-image {
+        margin-left: 10px;
+    }
+    .right-image {
+        margin-right: 5px !important;
+    }
+    .my-image-class {
+        margin-top: -800px !important;
+        margin-left: -5px !important;
+        height: 500px !important;
+        width: 667px !important;
+        object-fit: contain;
+    }
+    .search {
+        margin-top: 50px;
+        width: 150%;
+        margin-left: -50px !important;
+        order: -1;
+        margin-bottom: 10px;
+    }
+    .search-bar:focus {
+        border-color: #007bff; /* Change border color */
+        box-shadow: 0 0 10px rgba(0, 123, 255, 0.5); /* Highlight shadow */
+    }
+    .heading-wrapper {
+        flex-direction: row; /* Stack items vertically on smaller screens */
+        margin-left: -50px;
+        margin-top: 10px;
+    }
+    .heading-wrapper .highlight,
+    .heading-wrapper p {
+        font-size: 32px; /* Adjust font size for landscape orientation */
+        font-weight: bold;
+    }
+    .left-section .vault {
+        margin-top: 5px;
+        font-size: 32px;
+        margin-left: -150px;
+    }
+    .left-section .lowkey {
+        font-weight: 500;
+        margin-top: 10px;
+        font-size: 12px;
+        margin-left: -140px;
+    }
+}
+
+
+
+
+
+
+
+
+
+/* Media Queries for Mobile View */
+
+
+
+    </style>
+</head>
+<body>
+    
+    
+    <div class="image-row">
+        <img src="{% static 'images/ku.png' %}" alt="Left Image" class="left-image" style="margin-left: 140px;">
+        <img src="{% static 'images/dec.png' %}" alt="Right Image" class="right-image" style="margin-right: 180px;">
+    </div>
+    
+    
+               
+    <div class="hide-scrollbar"></div>
+    <div class="container h-100">
+        
+        <div class="container" style="margin-top: 20px; margin-left: 50px;">
+           
+            
+            <!-- Left Section -->
+            <div class="left-section">
+                
+                <div class="heading-wrapper" style="margin-left: -80px;">
+                    <p><span class="highlight">UCEK</span></p>
+                    <p>Study</p>
+                </div>
+                
+                <p class="vault">Vault</p>
+                <p class="lowkey">Search it.Get it</p>
+                <div class="search">
+                          <input class="search_input" type="text" id="search" placeholder="Search for your Materials" autocomplete="off">
+                          <a href="{% url 'upload_pdf' %}" class="search_icon"><i class="fa fa-upload"></i></a>
+
+            
+            <div id="suggestions" class="suggestions" style="display: none;">
+                <!-- Suggestions will appear here dynamically -->
+            </div>
+            
+                </div>
+                
+            </div>
+    
+            <!-- Right Section -->
+            <div class="right-section">
+                <!-- Example of adding an image -->
+                <img src="{% static 'images/feedimg.png' %}" alt="Sample Image" class="my-image-class">
+
+                
+            </div>
+        </div>
+        </div>
+    
+    </div>
+    
+    
+    
+   
+    
+
+    
+
+    <div id="selected-pdfs" style="margin-top: 20px; display: flex; flex-wrap: wrap;">
+        <!-- Selected PDF squares will be displayed here -->
+    </div>
+    
+
+    <ul>
+        {% for pdf in results %}
+            <li>
+                {{ pdf.name }} - <a href="{{ pdf.file.url }}" target="_blank"></a>
+                
+            </li>
+        {% endfor %}
+    </ul>
+    
+
+    <script>
+        const searchInput = document.getElementById('search');
+        const suggestionsBox = document.getElementById('suggestions');
+
+        searchInput.addEventListener('input', function() {
+            const query = this.value;
+
+            // Fetch suggestions from the server
+            if (query.length > 0) {
+                fetch(`?q=${query}`, {
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest'
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    suggestionsBox.innerHTML = ''; // Clear previous suggestions
+                    if (data.suggestions.length > 0) {
+                        
+                        
+                        suggestionsBox.style.display = 'block'; // Show suggestions
+                        data.suggestions.forEach(suggestion => {
+                            const div = document.createElement('div');
+                            div.textContent = suggestion;
+
+                            // Find the corresponding PDF URL to open in a new tab
+                            const pdfUrl = data.pdfUrls[suggestion]; // Accessing the PDF URL
+
+                            div.addEventListener('click', function() {
+                                window.open(pdfUrl, '_blank'); // Open the PDF in a new tab
+                                suggestionsBox.style.display = 'none'; // Hide suggestions
+                            });
+                            suggestionsBox.appendChild(div);
+                        });
+                    } else {
+                        suggestionsBox.style.display = 'none'; // Hide if no suggestions
+                    }
+                });
+            } else {
+                suggestionsBox.style.display = 'none'; // Hide if query is empty
+            }
+        });
+
+        // Hide suggestions if clicking outside
+        document.addEventListener('click', function(event) {
+            if (!suggestionsBox.contains(event.target) && event.target !== searchInput) {
+                suggestionsBox.style.display = 'none';
+            }
+        });
+        let isAdding = false; // To track whether we are in add mode
+let selectedPDFs = []; // To keep track of selected PDF names
+
+document.getElementById('add-button').addEventListener('click', function() {
+    isAdding = !isAdding; // Toggle adding mode
+
+    // Change button text based on mode
+    this.textContent = isAdding ? ' - ' : ' + '; // Change button text to '-' when in add mode
+});
+
+// Function to add selected PDF to the selected-pdfs div
+function addSelectedPDF(pdfName) {
+    if (!isAdding) return; // Only allow adding when in add mode
+
+    if (!selectedPDFs.includes(pdfName)) {
+        selectedPDFs.push(pdfName); // Add the PDF name to the list
+        updateSelectedPDFsDisplay();
+    }
+}
+// Function to add suggestion text to the search input box
+function addToSearchBox(pdfName) {
+    document.getElementById('search').value = pdfName;
+}
+
+// Display suggestions with arrow icons
+function displaySuggestions(results) {
+    const suggestionsDiv = document.getElementById("suggestions");
+    suggestionsDiv.innerHTML = ""; // Clear previous suggestions
+
+    results.forEach((pdf) => {
+        // Create the suggestion item container
+        const suggestionItem = document.createElement("div");
+        suggestionItem.classList.add("suggestion-item");
+
+        // Add the PDF name
+        const suggestionText = document.createElement("span");
+        suggestionText.textContent = pdf.name;
+        
+        // Add the arrow icon
+        const arrowIcon = document.createElement("i");
+        arrowIcon.classList.add("fa", "fa-arrow-right"); // Font Awesome classes
+
+        // Append the text and icon to the suggestion item
+        suggestionItem.appendChild(suggestionText);
+        suggestionItem.appendChild(arrowIcon);
+
+        // Append the suggestion item to the suggestions div
+        suggestionsDiv.appendChild(suggestionItem);
+
+        // Event listener to add suggestion to search box on click
+        suggestionItem.addEventListener("click", () => {
+            document.getElementById("search").value = pdf.name;
+            suggestionsDiv.style.display = "none"; // Hide suggestions after selection
+        });
+    });
+
+    // Display suggestions div if there are results
+    suggestionsDiv.style.display = results.length > 0 ? "block" : "none";
+}
+// Track the current selection in the suggestion list
+
+// Function to update the display of selected PDFs
+
+    
+    </script>
+</body>
+</html>
